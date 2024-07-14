@@ -4,30 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anik To-Do Web App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Anik To-Do Web App</h1>
-        
-        <div class="input-group">
-            <input type="text" id="timeInput" placeholder="Enter time (e.g., 07:00 AM)">
-            <input type="text" id="activityInput" placeholder="Enter activity">
-            <button onclick="addActivity()">Add Activity</button>
-            <button onclick="clearAll()">Clear All</button>
-        </div>
+        <header>
+            <h1>Anik To-Do Web App</h1>
+            <div class="clock-calendar">
+                <div class="time-display">
+                    <div id="clock"></div>
+                    <div id="ampm"></div>
+                </div>
+                <div class="date-display">
+                    <div id="day"></div>
+                    <div id="date"></div>
+                </div>
+            </div>
+        </header>
 
-        <table id="activityTable">
-            <thead>
-                <tr>
-                    <th>Time</th>
-                    <th>Activity</th>
-                    <th>Complete</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
+        <main>
+            <div class="input-group">
+                <input type="text" id="timeInput" placeholder="Enter time (e.g., 07:00 AM)">
+                <input type="text" id="activityInput" placeholder="Enter activity">
+                <button onclick="addActivity()" class="btn-add"><i class="fas fa-plus"></i> Add Activity</button>
+            </div>
+
+            <table id="activityTable">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Activity</th>
+                        <th>Complete</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </main>
+
+        <footer>
+            <button onclick="clearAll()" class="btn-clear"><i class="fas fa-trash"></i> Clear All</button>
+        </footer>
     </div>
 
     <script src="script.js"></script>

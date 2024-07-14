@@ -1,47 +1,129 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --background-color: #ecf0f1;
+    --text-color: #34495e;
+    --accent-color: #e74c3c;
+}
+
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
 }
 
 .container {
     max-width: 800px;
-    margin: 50px auto;
+    margin: 0 auto;
     padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+}
+
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
     text-align: center;
-    color: #333;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.clock-calendar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.time-display {
+    display: flex;
+    align-items: baseline;
+}
+
+#clock {
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+#ampm {
+    font-size: 1.2em;
+    margin-left: 5px;
+}
+
+.date-display {
+    text-align: right;
+}
+
+#day {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+#date {
+    font-size: 1em;
+}
+
+main {
+    background-color: white;
+    padding: 20px;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .input-group {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     gap: 10px;
     margin-bottom: 20px;
 }
 
-.input-group input, .input-group button {
+.input-group input {
+    flex: 1;
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
-.input-group button {
-    background-color: #007bff;
-    color: #fff;
+.btn-add, .btn-clear {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.input-group button:hover {
-    background-color: #0056b3;
+.btn-add {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.btn-add:hover {
+    background-color: #27ae60;
+}
+
+.btn-clear {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.btn-clear:hover {
+    background-color: #c0392b;
 }
 
 table {
@@ -51,13 +133,14 @@ table {
 }
 
 th, td {
-    padding: 10px;
+    padding: 12px;
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
 
 th {
-    background-color: #f4f4f4;
+    background-color: #f8f9fa;
+    font-weight: bold;
 }
 
 .completed {
@@ -66,26 +149,40 @@ th {
 }
 
 .delete-btn {
-    background-color: #dc3545;
-    color: #fff;
+    background-color: var(--accent-color);
+    color: white;
     border: none;
     padding: 5px 10px;
     cursor: pointer;
     border-radius: 4px;
+    transition: background-color 0.3s ease;
 }
 
 .delete-btn:hover {
-    background-color: #c82333;
+    background-color: #c0392b;
+}
+
+footer {
+    margin-top: 20px;
+    text-align: center;
 }
 
 @media (max-width: 600px) {
     .input-group {
         flex-direction: column;
-        align-items: stretch;
     }
 
     .input-group input, .input-group button {
         width: 100%;
-        margin-bottom: 10px;
+    }
+
+    .clock-calendar {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .date-display {
+        margin-top: 10px;
     }
 }
