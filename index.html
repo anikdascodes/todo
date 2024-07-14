@@ -11,11 +11,10 @@
         <h1>Anik To-Do Web App</h1>
         
         <div class="input-group">
-            <select id="timeSelect">
-                <option value="">Select time</option>
-            </select>
+            <input type="text" id="timeInput" placeholder="Enter time (e.g., 07:00 AM)">
             <input type="text" id="activityInput" placeholder="Enter activity">
             <button onclick="addActivity()">Add Activity</button>
+            <button onclick="clearAll()">Clear All</button>
         </div>
 
         <table id="activityTable">
@@ -29,8 +28,6 @@
             </thead>
             <tbody></tbody>
         </table>
-
-        <button id="resetButton" onclick="resetApp()">Reset App</button>
     </div>
 
     <script src="script.js"></script>

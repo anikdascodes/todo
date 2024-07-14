@@ -1,31 +1,15 @@
-// Populate time options
-const timeSelect = document.getElementById('timeSelect');
-for (let i = 0; i < 24; i++) {
-    const hour = i + 6;
-    const ampm = hour >= 12 && hour < 24 ? 'PM' : 'AM';
-    const hour12 = hour % 12 || 12;
-    const time = `${hour12}:00 ${ampm}`;
-    const option = document.createElement('option');
-    option.value = time;
-    option.textContent = time;
-    timeSelect.appendChild(option);
-}
-
 // Add activity function
 function addActivity() {
-    const time = timeSelect.value;
+    const time = document.getElementById('timeInput').value;
     const activity = document.getElementById('activityInput').value;
     if (time && activity) {
         const table = document.getElementById('activityTable').getElementsByTagName('tbody')[0];
         const newRow = table.insertRow();
         newRow.insertCell(0).textContent = time;
-        newRow.cells[0].setAttribute('data-label', 'Time');
         const activityCell = newRow.insertCell(1);
         activityCell.textContent = activity;
-        activityCell.setAttribute('data-label', 'Activity');
         
         const completeCell = newRow.insertCell(2);
-        completeCell.setAttribute('data-label', 'Complete');
         const completeCheckbox = document.createElement('input');
         completeCheckbox.type = 'checkbox';
         completeCheckbox.onchange = function() {
@@ -34,7 +18,6 @@ function addActivity() {
         completeCell.appendChild(completeCheckbox);
 
         const deleteCell = newRow.insertCell(3);
-        deleteCell.setAttribute('data-label', 'Action');
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Delete';
         deleteButton.className = 'delete-btn';
@@ -46,9 +29,15 @@ function addActivity() {
         sortTable();
 
         // Clear input fields
-        timeSelect.value = '';
+        document.getElementById('timeInput').value = '';
         document.getElementById('activityInput').value = '';
     }
+}
+
+// Clear all activities function
+function clearAll() {
+    const table = document.getElementById('activityTable').getElementsByTagName('tbody')[0];
+    table.innerHTML = '';
 }
 
 // Sort table function
@@ -74,12 +63,4 @@ function convertTo24Hour(time12h) {
         hours = parseInt(hours, 10) + 12;
     }
     return `${hours.padStart(2, '0')}:${minutes}`;
-}
-
-// Reset app function
-function resetApp() {
-    const table = document.getElementById('activityTable').getElementsByTagName('tbody')[0];
-    table.innerHTML = '';
-    timeSelect.value = '';
-    document.getElementById('activityInput').value = '';
 }
